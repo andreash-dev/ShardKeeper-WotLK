@@ -1,9 +1,10 @@
 ## Interface: 30300
 ## Title: ShardKeeper
-## Notes: Keeps your Soul Shard count at a set cap; deletes extras automatically.
-## Author: You
+## Notes: Automatically manages Soul Shards by keeping only a set amount.
+## Author: Cronix91
 ## Version: 1.0.0
 ## SavedVariables: ShardKeeperDB
 
 ShardKeeper.xml
 ShardKeeper.lua
+
