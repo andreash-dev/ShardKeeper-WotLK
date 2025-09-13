@@ -90,10 +90,10 @@ function ShardKeeper_OK()
   value = math.floor(math.max(0, math.min(64, value))) -- clamp 0–64
   ShardKeeperDB.cap = value
 
-  -- Ta ett initialt count före rensning
+  -- Take an initial count before cleaning
   local before = GetShardCount()
   local removed = DeleteExtraShards()
-  local after = math.max(before - removed, 0)  -- robust slutvärde
+  local after = math.max(before - removed, 0)  -- robust final value
 
   NS.GUI:UpdateReadouts()
 
@@ -217,3 +217,4 @@ SlashCmdList.SHARDKEEPER = function()
     ShardKeeperOptions:Show()
   end
 end
+
