@@ -1,0 +1,93 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <!-- Minimap Button (Soul Shard icon) -->
+  <Button name="ShardKeeperMinimapButton" parent="Minimap" frameStrata="LOW" frameLevel="8" hidden="false">
+    <Size x="32" y="32"/>
+    <Anchors><Anchor point="CENTER"/></Anchors>
+    <NormalTexture file="Interface\Icons\INV_Misc_Gem_Amethyst_02"/>
+    <HighlightTexture file="Interface\Minimap\MiniMap-TrackingBorder" alphaMode="ADD"/>
+  </Button>
+
+  <!-- Options Window -->
+  <Frame name="ShardKeeperOptions" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+    <Size x="360" y="190"/>
+    <Anchors><Anchor point="CENTER"/></Anchors>
+
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+              edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+      <EdgeSize><AbsValue val="16"/></EdgeSize>
+      <TileSize><AbsValue val="32"/></TileSize>
+      <BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+    </Backdrop>
+
+    <Scripts>
+      <!-- 3.3.5 globals -->
+      <OnMouseDown> if arg1=="LeftButton" then this:StartMoving() end </OnMouseDown>
+      <OnMouseUp> this:StopMovingOrSizing() </OnMouseUp>
+      <OnShow> ShardKeeper_OnShow() </OnShow>
+    </Scripts>
+
+    <Layers>
+      <Layer level="ARTWORK">
+        <FontString name="ShardKeeperTitle" inherits="GameFontNormalLarge">
+          <Anchors><Anchor point="TOP" y="-12"/></Anchors>
+          <Text>ShardKeeper</Text>
+        </FontString>
+
+        <!-- Row 1: label + input + OK aligned horizontally -->
+        <FontString name="ShardKeeperCapLabel" inherits="GameFontHighlight">
+          <Anchors>
+            <Anchor point="TOPLEFT" x="16" y="-48"/>
+          </Anchors>
+          <Text>Set soul shard cap:</Text>
+        </FontString>
+
+        <!-- Row 2: label + value aligned horizontally -->
+        <FontString name="ShardKeeperCurrentLabel" inherits="GameFontHighlight">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="ShardKeeperCapLabel" relativePoint="BOTTOMLEFT" x="0" y="-18"/>
+          </Anchors>
+          <Text>Current soul shards:</Text>
+        </FontString>
+
+        <FontString name="ShardKeeperOptionsCurrentCount" inherits="GameFontHighlight">
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="ShardKeeperCurrentLabel" relativePoint="RIGHT" x="8" y="0"/>
+          </Anchors>
+          <Text>0</Text>
+        </FontString>
+      </Layer>
+    </Layers>
+
+    <Frames>
+      <!-- Input aligned with Row 1 baseline -->
+      <EditBox name="ShardKeeperCapInput" inherits="InputBoxTemplate" autoFocus="false">
+        <Size x="60" y="20"/>
+        <Anchors>
+          <Anchor point="LEFT" relativeTo="ShardKeeperCapLabel" relativePoint="RIGHT" x="10" y="0"/>
+        </Anchors>
+        <MaxLetters>3</MaxLetters>
+        <Scripts>
+          <OnTextChanged> this:SetText(string.gsub(this:GetText() or "", "%D", "")); this:HighlightText(0,0) </OnTextChanged>
+          <OnEnterPressed> ShardKeeper_OK() </OnEnterPressed>
+          <OnEscapePressed> this:ClearFocus() </OnEscapePressed>
+        </Scripts>
+      </EditBox>
+
+      <!-- OK button aligned to input -->
+      <Button name="ShardKeeperOK" inherits="UIPanelButtonTemplate">
+        <Size x="80" y="22"/>
+        <Anchors>
+          <Anchor point="LEFT" relativeTo="ShardKeeperCapInput" relativePoint="RIGHT" x="10" y="0"/>
+        </Anchors>
+        <Scripts><OnClick> ShardKeeper_OK() </OnClick></Scripts>
+      </Button>
+
+      <!-- Close centered at bottom -->
+      <Button name="ShardKeeperClose" inherits="UIPanelButtonTemplate">
+        <Size x="100" y="22"/>
+        <Anchors><Anchor point="BOTTOM" y="12"/></Anchors>
+        <Scripts><OnClick> this:GetParent():Hide() </OnClick></Scripts>
+      </Button>
+    </Frames>
+  </Frame>
+</Ui>
