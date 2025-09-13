@@ -18,4 +18,11 @@ It helps you manage your **Soul Shards** automatically.
 
 ## Installation
 1. Download the latest release or clone this repo.  
-2. Place the `ShardKeeper` folder inside:  
+2. Place the `ShardKeeper` folder inside:  World of Warcraft\Interface\AddOns\
+3. Restart WoW or type `/reload`.
+
+## Notes
+- Designed for **WoW 3.3.5a (WotLK private servers)**.  
+- Minimal, no extra fluff – just shard management.  
+
+---
