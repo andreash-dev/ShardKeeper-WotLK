@@ -6,7 +6,7 @@ ShardKeeperDB = ShardKeeperDB or {}
 
 -- Defaults
 local defaults = {
-  cap = 20,
+  cap = 5,
   minimap = { angle = 220 }, -- degrees (around the Minimap)
 }
 
@@ -35,7 +35,7 @@ local function DeleteExtraShards()
   local need    = count - cap
   local removed = 0
 
-  -- Scan from last bag/slot (often newest shards end up later)
+  -- Scan from last bag/slot (newer shards often appear later)
   for _ = 1, need do
     local deleted = false
     for bag = NUM_BAG_SLOTS, 0, -1 do
@@ -139,6 +139,14 @@ f:RegisterEvent("CHAT_MSG_LOOT")
 
 f:SetScript("OnEvent", function(self, event, ...)
   if event == "PLAYER_LOGIN" then
+    -- Only activate if player is a Warlock
+    local _, class = UnitClass("player")
+    if class ~= "WARLOCK" then
+      if ShardKeeperMinimapButton then ShardKeeperMinimapButton:Hide() end
+      self:UnregisterAllEvents()
+      return
+    end
+
     applyDefaults(ShardKeeperDB, defaults)
     PositionMinimapButton()
 
@@ -217,4 +225,3 @@ SlashCmdList.SHARDKEEPER = function()
     ShardKeeperOptions:Show()
   end
 end
-
