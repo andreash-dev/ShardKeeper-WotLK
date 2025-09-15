@@ -1,10 +1,13 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-  <!-- Minimap Button (Soul Shard icon) -->
+  <!-- Minimap Button (Soul Shard icon, no border) -->
   <Button name="ShardKeeperMinimapButton" parent="Minimap" frameStrata="LOW" frameLevel="8" hidden="false">
-    <Size x="32" y="32"/>
+    <Size x="20" y="20"/>
     <Anchors><Anchor point="CENTER"/></Anchors>
+
+    <!-- Icon -->
     <NormalTexture file="Interface\Icons\INV_Misc_Gem_Amethyst_02"/>
-    <HighlightTexture file="Interface\Minimap\MiniMap-TrackingBorder" alphaMode="ADD"/>
+    <PushedTexture file="Interface\Icons\INV_Misc_Gem_Amethyst_02"/>
+    <HighlightTexture file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight" alphaMode="ADD"/>
   </Button>
 
   <!-- Options Window -->
