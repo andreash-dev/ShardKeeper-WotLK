@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="ShardKeeper.jpg" alt="ShardKeeper logo" width="150" height="150"/>
+</p>
+
 # ShardKeeper-WotLK
 
 A simple World of Warcraft 3.3.5 (Wrath of the Lich King) addon for Warlocks.  
