@@ -2,9 +2,10 @@
 ## Title: ShardKeeper
 ## Notes: Automatically manages Soul Shards by keeping only a set amount.
 ## Author: Cronix91
-## Version: 1.0.0
+## Version: 1.0.3
 ## SavedVariables: ShardKeeperDB
 
 ShardKeeper.xml
 ShardKeeper.lua
+
 
