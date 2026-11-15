@@ -1,0 +1,6 @@
+# Local build output and working notes
+/dist/
+/artwork/
+/REVIEW.md
+*.luac
+__pycache__/

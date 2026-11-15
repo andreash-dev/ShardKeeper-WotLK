@@ -1,32 +1,56 @@
 <p align="center">
-  <img src="ShardKeeper.jpg" alt="ShardKeeper logo" width="150" height="150"/>
+  <img src="docs/icon.png" alt="ShardKeeper" width="96" height="96" />
 </p>
 
-# ShardKeeper-WotLK
+# ShardKeeper
 
-A simple World of Warcraft 3.3.5 (Wrath of the Lich King) addon for Warlocks.  
-It helps you manage your **Soul Shards** automatically.
+Soul Shard management for **Warlocks on WoW 3.3.5a (WotLK)**. Set how many shards you want to keep; ShardKeeper removes the excess from your bags.
 
-## What it does
-- Lets you set a **cap** for how many Soul Shards you want to keep.  
-- When you loot a new shard and you’re above the cap, the addon will delete the extra one.  
-- Provides a small GUI accessible from a **minimap button** where you can:
-  - Set your shard cap
-  - See your current shard count
-- Includes a quick toggle via **right-click on the minimap icon** to switch between cap = 0 and your default.
+[**Download the latest version**](https://github.com/andreash-dev/ShardKeeper-WotLK/releases/latest)
 
-## Why use it?
-- Keeps your bags clean from shard clutter.  
-- Very lightweight and simple to use.  
-- Perfect for Warlocks who don’t want to micromanage shards manually.
+- **Choose a target from 0 to 32**, or use the 5 / 10 / 20 / 32 presets.
+- **Pause and resume** without losing your target. Resuming cleans up existing excess.
+- **See your shard count** and cleanup status in a compact, movable window.
+- **Works with the default WoW UI and ElvUI**, with automatic ElvUI styling.
+- **Round and square minimap support**, with distinct active and paused icons.
+- **No required dependencies.** Activates only for Warlocks.
+
+## Controls
+
+| Action | Control |
+| --- | --- |
+| Open / close settings | Left-click the minimap icon, `/sk` or `/shardkeeper` |
+| Pause / resume cleanup | Right-click the minimap icon or use the panel button |
+| Move the minimap icon | Shift + left-drag |
+| Save a preset | Click 5, 10, 20 or 32 |
+| Save a typed target | Press Enter or close the window with X, Close or Escape |
+
+**Cleanup permanently deletes excess Soul Shards.** A target of 0 removes all carried shards while active. Pause cleanup to keep additional shards.
 
 ## Installation
-1. Download the latest release or clone this repo.  
-2. Place the `ShardKeeper` folder inside:  World of Warcraft\Interface\AddOns\
-3. Restart WoW.
 
-## Notes
-- Designed for **WoW 3.3.5a (WotLK private servers)**.  
-- Minimal, no extra fluff – just shard management.  
+1. Download **ShardKeeper-1.1.0.zip** from [Releases](https://github.com/andreash-dev/ShardKeeper-WotLK/releases/latest).
+2. Extract the `ShardKeeper` folder into `World of Warcraft/Interface/AddOns/`.
+3. Check that `Interface/AddOns/ShardKeeper/ShardKeeper.toc` exists.
+4. Restart WoW and enable ShardKeeper in the AddOns list.
 
----
+When updating, replace the existing `ShardKeeper` folder. Your saved settings are retained.
+
+## Compatibility
+
+- **Client:** WoW 3.3.5a, interface 30300. Tested in-game on Warmane.
+- **Interface:** standard WoW UI or ElvUI. “Default UI” does not mean the Vanilla 1.12 client.
+- **Settings:** shared across Warlocks on the same account.
+- **Shard limit:** WotLK normally allows up to 32 Soul Shards. Choosing a target does not increase the game limit or generate shards.
+
+Cleanup waits for inventory changes to be confirmed before deleting another shard, and skips locked items or an occupied cursor. If inventory updates cannot be confirmed, it stops rather than continuing to delete.
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes. Found a problem? [Open an issue](https://github.com/andreash-dev/ShardKeeper-WotLK/issues) with your client, UI setup and steps to reproduce it.
+
+## Development
+
+Run `lua tests/test_ui.lua` from the repository root. The checks cover settings, UI callbacks, minimap placement and inventory-event regressions; actual rendering and server behavior require in-game testing.
+
+## License
+
+[MIT](LICENSE)
