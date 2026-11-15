@@ -15,6 +15,16 @@ Soul Shard management for **Warlocks on WoW 3.3.5a (WotLK)**. Set how many shard
 - **Round and square minimap support**, with distinct active and paused icons.
 - **No required dependencies.** Activates only for Warlocks.
 
+## Screenshots
+
+### ElvUI
+
+<img src="docs/gui-elvui.png" alt="ShardKeeper with ElvUI" width="480" />
+
+### Original WoW UI
+
+<img src="docs/gui-original.png" alt="ShardKeeper with the original WoW interface" width="480" />
+
 ## Controls
 
 | Action | Control |
@@ -31,15 +41,14 @@ Soul Shard management for **Warlocks on WoW 3.3.5a (WotLK)**. Set how many shard
 
 1. Download **ShardKeeper-1.1.0.zip** from [Releases](https://github.com/andreash-dev/ShardKeeper-WotLK/releases/latest).
 2. Extract the `ShardKeeper` folder into `World of Warcraft/Interface/AddOns/`.
-3. Check that `Interface/AddOns/ShardKeeper/ShardKeeper.toc` exists.
-4. Restart WoW and enable ShardKeeper in the AddOns list.
+3. Restart WoW and enable ShardKeeper in the AddOns list.
 
 When updating, replace the existing `ShardKeeper` folder. Your saved settings are retained.
 
 ## Compatibility
 
 - **Client:** WoW 3.3.5a, interface 30300. Tested in-game on Warmane.
-- **Interface:** standard WoW UI or ElvUI. “Default UI” does not mean the Vanilla 1.12 client.
+- **Interface:** standard WoW UI or ElvUI.
 - **Settings:** shared across Warlocks on the same account.
 - **Shard limit:** WotLK normally allows up to 32 Soul Shards. Choosing a target does not increase the game limit or generate shards.
 
